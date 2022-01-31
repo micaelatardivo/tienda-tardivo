@@ -1,6 +1,6 @@
-import './Menu.css';
+import './NavBar.css';
 
-function Menu() {
+function NavBar() {
     return (
         <div className="container">
             <h1>CUARTO SET</h1>
@@ -9,8 +9,9 @@ function Menu() {
                     <li>Productos</li>
                     <li>Mayorista</li>
                 </ul>
+                
         </div>
     );
 }
 
-export default Menu; 
+export default NavBar; 
