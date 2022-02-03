@@ -7,9 +7,7 @@ function App() {
   return (
     <div>
       <header> <NavBar /> </header>
-          <ItemListContainer greeting="PRIMER TEXTO" />
-          <ItemListContainer greeting="SEGUNDO TEXTO" />
-          <ItemListContainer greeting="TERCER TEXTO" />
+          <ItemListContainer greeting="elegi la cantidad de tu producto" />
     </div>
   );
 }
