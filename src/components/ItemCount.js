@@ -4,17 +4,23 @@ const ItemCount = ({stock, initial, onAdd}) => {
 const [counter, SetCounter] = useState (initial);
 
 function resta() {
-    SetCounter(counter - 1)
+   if (counter > 1) {
+        SetCounter(counter - 1);
+   }
 }
 
 function suma() {
-    SetCounter(counter + 1)
+    if (counter < stock) {
+        SetCounter(counter + 1)
+    }
 }
     return (
         <div>
-            <p>{counter}</p>
+        <div>
             <button onClick={resta}>-</button>
+            <p>{counter}</p>
             <button onClick={suma}>+</button>
+        </div>
             <button onClick={onAdd}>Agregar al carrito</button>
         </div>
     )

@@ -8,6 +8,7 @@ function ItemListContainer({greeting}) {
     function onAdd() {
         alert("se agrego tu producto");
     }
+
     return (
         <div className="container-item">
             <p>Hola, {greeting} </p>
