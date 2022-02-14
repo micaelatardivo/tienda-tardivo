@@ -4,24 +4,38 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 
 import ItemDetailContainer from './components/ItemDetailContainer'; 
+import { BrowserRouter, Routes , Route } from 'react-router-dom';
 
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
+          <div>
+            <header> 
+              <NavBar /> 
+            </header>
+        
+            <main >
+              <div className="desktop-container">
+                <Routes>
+                  <Route 
+                  path="/" 
+                  element={<ItemListContainer greeting="Bienvenidos a CUARTO SET" />} />
 
-      <header> 
-        <NavBar /> 
-      </header>
-          
-      <main >
-        <div className="desktop-container">
-          <ItemListContainer greeting="CUARTO SET" />
-          <ItemDetailContainer />
-        </div>
-      </main>
+                  <Route 
+                  path="/category/:categoryName" 
+                  element={<ItemListContainer greeting="Categoria"/>} />
+                  
+                  <Route 
+                  path="/producto/:itemId" 
+                  element={<ItemDetailContainer />} />
+                  
+                </Routes>
+              </div>
+            </main>
 
-    </div>
+          </div>
+    </BrowserRouter>
   );
 }
 
