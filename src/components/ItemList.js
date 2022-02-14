@@ -1,13 +1,13 @@
 import './ItemList.css';
 import Item from './Item';
 
-export default function ItemList ({products}) {
+export default function ItemList ({ items }) {
     return (
-        <div>
+        <div className="item-list-container">
             {
-                products.map ( function (producto){
+                items.map ( function (item){
                     return (
-                        <Item key={producto.id} item={producto} />
+                        <Item key={item.id} item={item} />
                     )
                 })
             }

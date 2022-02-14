@@ -1,7 +1,7 @@
-import { useEffect , useState } from "react/cjs/react.production.min";
-import { getItems } from '../api';
-import ItemDetail from "./ItemDetail";
 
+import { useEffect , useState } from 'react';
+import { getItems } from '../api/api';
+import ItemDetail from "./ItemDetail";
 
 
 export default function ItemDetailContainer () {

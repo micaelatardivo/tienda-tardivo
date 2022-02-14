@@ -2,10 +2,12 @@ import './Item.css';
 
 export default function Item ({item}) {
     return (
-        <div>
+        <div className="item-container">
             <img src={item.pictureUrl} alt="imagen del producto"></img>
-            <p>{item.price}</p>
-            <p>{item.title}</p>
+            <div className="detail-container">
+                <p className="item-price">{item.price}</p>
+                <p className="item-title">{item.title}</p>
+            </div>
         </div>
     )
 }

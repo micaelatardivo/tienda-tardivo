@@ -1,4 +1,4 @@
-const products = [
+const items = [
     {   id:1 ,
         title:"Adi Power 2.0",
         description: "Paddle",
@@ -21,15 +21,13 @@ const products = [
 
 
 
-const promesa = new Promise (function (resolve, reject) {
-   
-    setTimeout( function () {
-        resolve (products);
-    }, 2000);
-});
-
 function getItems () {
-    return promesa;
+    return new Promise((resolve, reject) => {
+   
+        setTimeout(() => {
+            resolve (items);
+        }, 2000);
+    });
 }
 
 export {
