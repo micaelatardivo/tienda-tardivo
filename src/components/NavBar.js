@@ -12,7 +12,10 @@ function NavBar() {
                     <li><NavLink to="/category/paletas"> Paletas </NavLink></li>
                     <li><NavLink to="/category/accesorios"> Accesorios </NavLink></li>
                     <li><NavLink to="/category/bolsos"> Bolsos </NavLink></li>
-                    <li><CartWidget /></li>
+                    <li> <Link to="/src/components/CartWidget.js">
+                        <CartWidget />
+                        </Link>
+                    </li>
                 </ul>
                 
         </div>
