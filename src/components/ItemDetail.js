@@ -24,7 +24,7 @@ export default function ItemDetail ( { item }) {
                 { 
                     !itemCount ?
                     <ItemCount stock={5} initial={1} onAdd={onAdd} /> :
-                    <Link to="/cart">Finalizar compra</Link>
+                    <Link to={`/cart`}>Finalizar compra</Link>
                 }
                 </div>
         </div>
