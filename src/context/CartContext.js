@@ -11,8 +11,9 @@ const CartContextProvider = ({ children }) => {
         //console.log (cantidad, item);
 
         if (isOnCart(item.id)) {
-            alert('Ya esta en el carrito')
-
+            //alert('Ya esta en el carrito')
+            //sumar la cantidad
+            sumarCantidad(cantidad, item)
         } else {
             setCart([...cart, {...item, cantidad}]);
         }
@@ -27,6 +28,17 @@ const CartContextProvider = ({ children }) => {
     
     };
 
+    //sumar la cantidad
+
+    const sumarCantidad = (cantidad, item) => {
+        const copia = [...cart]
+        copia.forEach ((producto)=>{
+            if (producto.id === item.id) {
+                producto.cantidad += cantidad
+            }
+        })
+    }
+
     //vaciar carrito
 
     const vaciarCarrito = () => {
@@ -35,9 +47,19 @@ const CartContextProvider = ({ children }) => {
 
     console.log (cart)
 
+    //eliminar por item
+
+    const deleteItem = (id) => {
+        setCart (cart.filter ((producto) => producto.id !== id))
+    }
+
+    //sumar total del carrito
+
+    //sumar la cantidad de unidades del carrito
+
     return ( 
-            <CartContext.Provider value={{ cart, addToCart, vaciarCarrito}}>
-                {children}
+            <CartContext.Provider value={{ cart, addToCart, vaciarCarrito, deleteItem}}>
+                 {children}
             </CartContext.Provider>
     );
 };
