@@ -1,9 +1,11 @@
+import React from 'react';
+
 import { AiOutlineShoppingCart} from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 export default function CartWidget () {
-    return <Link to="/components/Cart"><AiOutlineShoppingCart fontSize="24px" /></Link>
+    return <AiOutlineShoppingCart fontSize="24px" />
     
 }
 

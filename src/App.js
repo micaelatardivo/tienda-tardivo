@@ -1,5 +1,6 @@
 
 import './App.css';
+import Cart from './components/Cart'
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 
@@ -33,6 +34,10 @@ function App() {
                   <Route 
                   path="/producto/:itemId" 
                   element={<ItemDetailContainer />} />
+
+                  <Route 
+                  path="/cart" 
+                  element={<Cart />} />  
                   
                 </Routes>
               </div>
