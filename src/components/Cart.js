@@ -1,25 +1,9 @@
-import { AiOutlineShoppingCart} from 'react-icons/ai';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
-
-export default function CartWidget () {
-    return <Link to="/components/Cart"><AiOutlineShoppingCart fontSize="24px" /></Link>
-    
-}
-
-
-
-
-
-
-/* import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-
 import { CartContext } from '../context/CartContext';
-import './CartWidget.css';
 
 
- function CartWidget() {
+export default function Cart() {
 
     const {cart, vaciarCarrito, deleteItem} = useContext(CartContext);
 
@@ -46,4 +30,4 @@ import './CartWidget.css';
         )}
         </>
     );
-} */
+}
