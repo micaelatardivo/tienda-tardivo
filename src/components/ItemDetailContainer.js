@@ -1,11 +1,11 @@
 
 import { useEffect , useState } from 'react';
 
-import { getItems } from '../api/api';
 import ItemDetail from "./ItemDetail";
 
 import { useParams } from 'react-router-dom';
-
+import { doc, getDoc  } from 'firebase/firestore';
+import { db } from '../firebase';
 
 export default function ItemDetailContainer () {
 
@@ -13,16 +13,19 @@ export default function ItemDetailContainer () {
     const { itemId } = useParams();
 
     useEffect( () => {
-        getItems().then(( items ) => {
-            
-           const item = items.find((i) => i.id.toString() === itemId);
 
-           setItem(item);
+        const itemRef = doc(db,"items", itemId);
+        getDoc(itemRef)
+    .then((snapshot) => {
 
-        }).catch((error) => {
-            console.log(error);
-        })
-    
+        if(snapshot.exists()) {
+            setItem( { id: snapshot.id, ...snapshot.data()} )
+        }
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
     }, [ itemId ]);
 
     return (

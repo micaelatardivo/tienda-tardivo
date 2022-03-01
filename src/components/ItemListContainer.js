@@ -29,6 +29,7 @@ function ItemListContainer({greeting}) {
         });
     }, [categoryName]);
 
+
     function onAdd(ItemCount) {
         console.log(ItemCount);
     }
