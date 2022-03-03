@@ -10,7 +10,7 @@ export default function Cart() {
     return (
         
         <>
-            {cart.lenght === 0 ? (
+            {cart.length === 0 ? (
                 <>
                     <h2>Aún no hay productos</h2>
                     <Link to="/">Home</Link>
