@@ -4,21 +4,16 @@ export const CartContext = createContext ([]);
 
 const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
+    
 
     //agregar items al carrito
 
     const addToCart = (cantidad, item) => {
-        //console.log (cantidad, item);
-
-        if (isOnCart(item.id)) {
-            //alert('Ya esta en el carrito')
-            //sumar la cantidad
-            sumarCantidad(cantidad, item)
-        } else {
-            setCart([...cart, {...item, cantidad}]);
-        }
-        
+        isOnCart(item.id)
+            ? sumarCantidad(cantidad, item)
+            : setCart([...cart, { ...item, cantidad }]);
     };
+    
 
     //si esta en el carrito
     
@@ -31,35 +26,57 @@ const CartContextProvider = ({ children }) => {
     //sumar la cantidad
 
     const sumarCantidad = (cantidad, item) => {
-        const copia = [...cart]
-        copia.forEach ((producto)=>{
-            if (producto.id === item.id) {
-                producto.cantidad += cantidad
+        const newProducts = cart.map((prod) => {
+            if (prod.id === item.id) {
+                const newProduct = {
+                    ...prod,
+                    cantidad: cantidad + prod.cantidad,
+                };
+                return newProduct;
+            } else {
+                return prod;
             }
-        })
-    }
+        });
+        setCart(newProducts);
+    };
 
     //vaciar carrito
 
     const vaciarCarrito = () => {
         setCart([]);
-    };
-
-    console.log (cart)
+    };    
 
     //eliminar por item
 
     const deleteItem = (id) => {
-        setCart (cart.filter ((producto) => producto.id !== id))
-    }
+        setCart(cart.filter((producto) => producto.id !== id));
+    };
 
     //sumar total del carrito
 
+    const totalCart = () => {
+        return cart.reduce(
+            (prev, curr) => prev + curr.cantidad * curr.price,
+            0
+        );
+    };
+   
     //sumar la cantidad de unidades del carrito
 
+    const totalUnidades = () => {
+        return cart.reduce((prev, curr) => prev + curr.cantidad, 0);
+    };
+
     return ( 
-            <CartContext.Provider value={{ cart, addToCart, vaciarCarrito, deleteItem}}>
-                 {children}
+            <CartContext.Provider 
+            value={{ 
+                        cart,
+                        addToCart,
+                        vaciarCarrito,
+                        deleteItem,
+                        totalCart,
+                        totalUnidades,}}>
+            {children}
             </CartContext.Provider>
     );
 };

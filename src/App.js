@@ -8,10 +8,12 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import { BrowserRouter, Routes , Route } from 'react-router-dom';
 
 import CartContextProvider from './context/CartContext';
+import { MessageContextProvider } from './context/MessageContext';
 
 
 function App() {
   return (
+    <MessageContextProvider>
     <CartContextProvider>
     <BrowserRouter>
           <div>
@@ -46,6 +48,7 @@ function App() {
           </div>
     </BrowserRouter>
     </CartContextProvider>
+    </MessageContextProvider>
   );
 }
 

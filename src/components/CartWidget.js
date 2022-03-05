@@ -1,4 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { CartContext } from '../context/CartContext';
+
+const CartWidget = () => {
+    const { totalUnidades } = useContext(CartContext);
+
+    return (
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+            <AiOutlineShoppingCart size={24} />
+            <p>{totalUnidades()}</p>
+        </div>
+    );
+};
+
+export default CartWidget;
+
+
+
+
+
+/*import React from 'react';
 
 import { AiOutlineShoppingCart} from 'react-icons/ai';
 // import { Link } from 'react-router-dom';
@@ -7,7 +28,7 @@ import { AiOutlineShoppingCart} from 'react-icons/ai';
 export default function CartWidget () {
     return <AiOutlineShoppingCart fontSize="24px" />
     
-}
+}*/
 
 
 
