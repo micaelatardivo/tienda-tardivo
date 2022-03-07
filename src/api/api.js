@@ -54,6 +54,7 @@ export const getItem = (itemId) => {
             .then((snapshot) => {
                 if (snapshot.exists()) {
                     const item = { id: snapshot.id, ...snapshot.data() };
+                    console.log("item:"+ item);
                     resolve(item);
                 }
             })

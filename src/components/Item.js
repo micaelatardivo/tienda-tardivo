@@ -6,9 +6,10 @@ export default function Item ({ item }) {
         <div className="item-container">
             <Link to={`/producto/${item.id}`}>
                     <img src={item.pictureUrl} alt="imagen del producto"></img>
-                <div className="detail-container">
+                    <div className="detail-container">
                     <p className="item-price">${item.price}</p>
                     <p className="item-title">{item.title}</p>
+                    <p>{item.stock}</p>
                     
                     <Link
                     style={{

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 import ItemDetail from "./ItemDetail";
-import { getItems } from '../api/api';
+import { getItem } from '../api/api';
 import { useParams } from 'react-router-dom';
 
 
@@ -12,8 +12,9 @@ const ItemDetailContainer = () => {
     const { itemId } = useParams();
 
     useEffect(() => {
-        getItems(itemId)
+        getItem(itemId)
             .then((res) => {
+                console.log("response:"+res);
                 setItem(res);
             })
             .catch((error) => {
