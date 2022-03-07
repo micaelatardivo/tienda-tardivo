@@ -41,6 +41,7 @@ function App() {
                   path="/cart" 
                   element={<Cart />} />  
                   
+
                 </Routes>
               </div>
             </main>
@@ -53,3 +54,4 @@ function App() {
 }
 
 export default App;
+

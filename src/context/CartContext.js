@@ -55,10 +55,7 @@ const CartContextProvider = ({ children }) => {
     //sumar total del carrito
 
     const totalCart = () => {
-        return cart.reduce(
-            (prev, curr) => prev + curr.cantidad * curr.price,
-            0
-        );
+        return cart.reduce((prev, curr) => prev + curr.cantidad * curr.price, 0);
     };
    
     //sumar la cantidad de unidades del carrito

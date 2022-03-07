@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { MessageContext } from "../context/MessageContext";
 
+
 const ItemDetail = ({ item }) => {
     const [ itemCount , setItemCount] = useState (false);
     
@@ -19,19 +20,20 @@ const ItemDetail = ({ item }) => {
     };
 
     return (
-        <div className="container-detail">
-            <div className="container-img">
+        <div>
+            <div>
                 <img src={item.pictureUrl} alt={item.title} />
             </div>
             <div style={{ width: '150px' }}>
                 <h2>{item.title}</h2>
                 <h2>{item.price}</h2>
+                
                 {itemCount ? (
                     <>
                         <Link to="/cart">Ir al carrito</Link>
                     </>
                 ) : (
-                    <ItemCount stock={item.stock} initial={0} onAdd={onAdd} />
+                    <ItemCount stock={20} initial={0} onAdd={onAdd} />
                 )}
             </div>
         </div>

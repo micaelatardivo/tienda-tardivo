@@ -51,10 +51,11 @@ const Cart = () => {
                         >
                             {cart.map((producto) => (
                                 <CartDetail
-                                    producto={producto}
                                     key={producto.id}
+                                    producto={producto}
                                 />
                             ))}
+                            
                         </div>
                         <div style={{ maxWidth: '40%' }}>
                             <h2 style={{ textAlign: 'center' }}>
@@ -101,9 +102,7 @@ const Cart = () => {
                         }}
                     >
                         <button onClick={vaciarCarrito}>Vaciar carrito</button>
-                        <p>
-                            Total: $ {totalCart()}
-                        </p>
+                        <p> Total: $ {totalCart()} </p>
                     </div>
                 </>
             )}
@@ -112,10 +111,6 @@ const Cart = () => {
 };
 
 export default Cart;
-
-
-
-
 
 
 

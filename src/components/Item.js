@@ -9,6 +9,7 @@ export default function Item ({ item }) {
                 <div className="detail-container">
                     <p className="item-price">${item.price}</p>
                     <p className="item-title">{item.title}</p>
+                    
                     <Link
                     style={{
                         textDecoration: 'none',

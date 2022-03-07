@@ -11,7 +11,6 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true);
     const { itemId } = useParams();
 
-    //tarea pesada
     useEffect(() => {
         getItems(itemId)
             .then((res) => {
@@ -21,7 +20,6 @@ const ItemDetailContainer = () => {
                 console.error(error);
             })
             .finally(() => {
-                //otra accion
                 setLoading(false);
             });
     }, [itemId]);

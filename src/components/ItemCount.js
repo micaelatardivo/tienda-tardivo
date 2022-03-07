@@ -7,12 +7,13 @@ const ItemCount = ({stock, initial, onAdd}) => {
 
     const suma = () => {
         itemCounter < stock
-            ? SetitemCounter (itemCounter + 1)
-            : handleMessage('Máximo stock', 'warning');
+                    ? SetitemCounter (itemCounter + 1)
+                    : handleMessage ('Máximo stock', 'warning');
     };
 
     const resta = () => {
-        itemCounter > initial && SetitemCounter(itemCounter - 1);
+        itemCounter > initial 
+                    && SetitemCounter(itemCounter - 1);
     };
 
     const addToCart = () => {
