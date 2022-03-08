@@ -61,7 +61,7 @@ const CartContextProvider = ({ children }) => {
     //sumar la cantidad de unidades del carrito
 
     const totalUnidades = () => {
-        return cart.reduce((prev, curr) => prev + curr.cantidad, 0);
+        return cart.reduce((prev, curr) => prev + curr.cantidad, null);
     };
 
     return ( 

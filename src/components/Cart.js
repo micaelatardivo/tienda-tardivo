@@ -62,9 +62,9 @@ const Cart = () => {
                                 Finalizá tu compra completando el formulario
                             </h2>
                             <form
-                                onSubmit={handleSubmit}
-                                action=""
-                                style={{
+                                    onSubmit={handleSubmit}
+                                    action=""
+                                    style={{
                                     display: 'flex',
                                     flexDirection: 'column',
                                 }}
@@ -83,10 +83,10 @@ const Cart = () => {
                                     type="email"
                                     placeholder="Email"
                                 />
-                                <button>
+                                <button disabled={(name === '') | (email === '')}>
                                     {loading
                                         ? 'Generando orden....'
-                                        : 'Finalizar compra'}
+                                        : 'Finalizar compra'} 
                                 </button>
                             </form>
                         </div>
@@ -113,11 +113,14 @@ const Cart = () => {
 export default Cart;
 
 
+/*
+<button disabled={itemCounter === 0} className={itemCounter === 0 ? 'disabled' : 'add'}
+                    onClick={addToCart}
+                >
+                    Agregar al carrito
+                </button>
 
-
-
-
-
+                */
 
 
 
