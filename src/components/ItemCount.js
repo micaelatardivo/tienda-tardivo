@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { MessageContext } from '../context/MessageContext';
+import './ItemCount.css';
 
 const ItemCount = ({stock, initial, onAdd}) => {
     const { handleMessage } = useContext(MessageContext);
@@ -23,17 +24,18 @@ const ItemCount = ({stock, initial, onAdd}) => {
     
     return (
         
-        <div >
-            <div >
-                <button onClick={resta}>-</button>
-                <p>{itemCounter}</p>
-                <button onClick={suma}>+</button>
+        <div>
+            <div className="button">
+                <button className="button2" onClick={resta}>-</button>
+                    <p>{itemCounter}</p>
+                <button className="button2" onClick={suma}>+</button>
             </div>
             <div>
                 <button disabled={itemCounter === 0} className={itemCounter === 0 ? 'disabled' : 'add'}
-                    onClick={addToCart}
-                >
+                    onClick={addToCart} className="">
+
                     Agregar al carrito
+
                 </button>
             </div>
         </div>
@@ -41,45 +43,3 @@ const ItemCount = ({stock, initial, onAdd}) => {
 };
 
 export default ItemCount;
-
-
-/*import React, { useState } from 'react';
-
-
-const ItemCount = ({stock, initial, onAdd}) => {
-const [itemCounter, SetitemCounter] = useState (initial);
-
-function resta(event) {
-    console.log(event);
-    if (itemCounter > 1) {
-        SetitemCounter(itemCounter - 1);
-   }
-}
-
-function suma() {
-    if (itemCounter < stock) {
-        SetitemCounter(itemCounter + 1)
-    }
-}
-
-function addToCart(){
-    onAdd(itemCounter);
-}
-
-
-    return (
-        <div>
-        <div>
-            <button onClick={resta}>-</button>
-            <p>{itemCounter}</p>
-            <button onClick={suma}>+</button>
-        </div>
-            <button onClick={addToCart}>Agregar al carrito</button>
-        </div>
-    )
-};
-
-export default ItemCount;
-
-*/
-

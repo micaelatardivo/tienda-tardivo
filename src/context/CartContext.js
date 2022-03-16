@@ -1,10 +1,16 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext ([]);
 
 const CartContextProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+        const storageData = localStorage.getItem('items');
+        return storageData ? JSON.parse(storageData) : [] ;
+    });
     
+    useEffect (() => {
+        window.localStorage.setItem('items', JSON.stringify(cart));
+    }, [cart]);
 
     //agregar items al carrito
 

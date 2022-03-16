@@ -7,11 +7,11 @@ export const MessageContextProvider = ({ children }) => {
     const [severity, setSeverity] = useState('');
 
     const handleMessage = (mensaje, severidad) => {
-        setMessage(mensaje);
-        setSeverity(severidad);
-        setTimeout(() => {
+            setMessage(mensaje);
+            setSeverity(severidad);
+            setTimeout(() => {
             setMessage('');
-        }, 3000);
+                            }, 2000);
     };
 
     return (

@@ -4,10 +4,12 @@ import { CartContext } from '../context/CartContext';
 import CartDetail from './CartDetail';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase';
+import './Cart.css';
 
 const Cart = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
+    const [number, setNumber] = useState('');
     const [orderId, setOrderId] = useState('');
     const [loading, setLoading] = useState(false);
     const { cart, vaciarCarrito, totalCart } = useContext(CartContext);
@@ -17,7 +19,7 @@ const Cart = () => {
         setLoading(true);
         const newOrder = {
             date: new Date(),
-            buyer: { email, name },
+            buyer: { email, name, number },
             items: cart,
             total: totalCart(),
         };
@@ -35,55 +37,65 @@ const Cart = () => {
     };
 
     if (orderId !== '') {
-        return <h2>Este es el Id de tu orden de compra: {orderId}</h2>;
+        return <h2 className="vacio"> ¡Gracias! Este es el Id de tu orden de compra: {orderId}
+                    <Link to="/" className="link"> - Regresar al inicio </Link></h2>
     }
     return (
         <>
             {cart.length === 0 ? (
                 <>
-                    <h2>Aún no hay productos, volvé al home</h2>
-                    <Link to="/">Home</Link>
+                    <h2 className="vacio"> Aún no hay productos :( volvé al
+                    <Link to="/" className="link"> Inicio </Link>
+                    </h2>
                 </>
             ) : (
                 <>
-                    <div>
-                        <div
-                        >
+                    <div className="container cart">
+                        
+                        <div >
                             {cart.map((producto) => (
                                 <CartDetail
+                                    
                                     key={producto.id}
                                     producto={producto}
                                 />
                             ))}
-                            
+
+                            <p className="total"> Total: $ {totalCart()} </p>
+                            <button onClick={vaciarCarrito} className="emplty-cart">Vaciar carrito</button>
+
                         </div>
-                        <div style={{ maxWidth: '40%' }}>
-                            <h2 style={{ textAlign: 'center' }}>
+
+                        <div >
+
+                            <h2 className="form">
                                 Finalizá tu compra completando el formulario
                             </h2>
-                            <form
-                                    onSubmit={handleSubmit}
-                                    action=""
-                                    style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                }}
-                            >
+
+                            <form className="form2" onSubmit={handleSubmit} action="">
+
                                 <input
                                     onChange={(e) => setName(e.target.value)}
                                     value={name}
-                                    style={{ margin: '10px' }}
                                     type="text"
                                     placeholder="Nombre"
                                 />
+
                                 <input
                                     onChange={(e) => setEmail(e.target.value)}
                                     value={email}
-                                    style={{ margin: '10px' }}
                                     type="email"
                                     placeholder="Email"
                                 />
-                                <button disabled={(name === '') | (email === '')}>
+
+                                <input
+                                    onChange={(e) => setNumber(e.target.value)}
+                                    value={number}
+                                    type="text"
+                                    placeholder="WhatsApp"
+                                />
+
+                                <button disabled={(name === '') | (email === '')} className="checkout">
                                     {loading
                                         ? 'Generando orden....'
                                         : 'Finalizar compra'} 
@@ -92,18 +104,6 @@ const Cart = () => {
                         </div>
                     </div>
 
-                    <div
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-start',
-                            marginLeft: '20px',
-                            marginTop: '10px',
-                        }}
-                    >
-                        <button onClick={vaciarCarrito}>Vaciar carrito</button>
-                        <p> Total: $ {totalCart()} </p>
-                    </div>
                 </>
             )}
         </>
@@ -113,97 +113,3 @@ const Cart = () => {
 export default Cart;
 
 
-/*
-<button disabled={itemCounter === 0} className={itemCounter === 0 ? 'disabled' : 'add'}
-                    onClick={addToCart}
-                >
-                    Agregar al carrito
-                </button>
-
-                */
-
-
-
-
-
-
-
-
-
-
-
-
-/*import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { CartContext } from '../context/CartContext';
-
-
-
-export default function Cart() {
-
-    const {cart, vaciarCarrito, deleteItem} = useContext(CartContext);
-
-    return (
-        
-        <>
-            {cart.length === 0 ? (
-                <>
-                    <h2>Aún no hay productos</h2>
-                    <Link to="/">Home</Link>
-                </>
-            ) : (
-            <>
-                {cart.map ((producto) => (
-                    <div key={producto.id}>
-                        <h3>{producto.title}</h3>
-                        <img src={producto.pictureUrl}/>
-                        <h3>Cantidad: {producto.cantidad}</h3>
-                        <h3>${producto.price * producto.cantidad}</h3>
-                        
-                        
-                        <button onClick={() => deleteItem (producto.id)}> X </button> 
-                    </div>
-                ))}
-                
-                
-                <button onClick={vaciarCarrito}>Vaciar carrito</button>
-                
-            </>
-        )}
-        </>
-    );
-}
-/*
-
-/* Cada vez que se modifica el carrito, actualizamos la cantidad de productos 
-  useEffect(() => {
-    setProductsLength(
-      cartItems.reduce((previous, current) => previous + current.amount, 0)
-    );
-  }, [cartItems]);
-
-
-
-
-
-/* carrito
-  <div>
-      <img src={item.img}/>
-      <div>
-        <div>
-          <p>{producto.cantidad}</p>
-          <div>
-            <button onClick={() => AddItemToCart(item)}> AGREGAR </button>
-            <button onClick={() => DeleteItemToCart(id)}> SACAR </button>
-          </div>
-        </div>
-        <div>
-          <div>{item.amount}</div>
-          <p>Total: ${item.amount * item.price}</p>
-        </div>
-      </div>
-    </div>
-
-
-
-*/

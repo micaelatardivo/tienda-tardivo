@@ -2,31 +2,49 @@
 .item-container {
     text-align: center;
     margin: 0 0 10px 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
 }
 
 .item-container a {
     text-decoration: none;
-    color: rgb(19, 19, 116);
+    color: rgb(255, 255, 255);
 }
+
 
 .item-container img {
     width: 100%;
-    height: 340px;
+    height: 260px;
     padding: 1rem;
-    padding-bottom: 0;
+    border-radius: 50%;
+    padding-bottom: 10px;
 }
 
 .detail-container {
-    background-color: rgb(171, 204, 158);
-    border-top: 1px solid;
     padding: 1rem 0;
     border-radius: 0 0 5px 5px;
 }
 
 .detail-container .item-price {
-    font-weight: bold;
+    font-weight: 200;
 }
 
 .detail-container .item-title {
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.btn {
+    background:rgba(255,255, 255, 0.2);
+    font-size: 13px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background 0.5 s;
+
+}
+
+.btn:hover {
+    background: rgb(72, 204, 45);
 }
