@@ -9,6 +9,7 @@ import './Cart.css';
 const Cart = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
+    const [lastname, setLastName] = useState('');
     const [number, setNumber] = useState('');
     const [orderId, setOrderId] = useState('');
     const [loading, setLoading] = useState(false);
@@ -80,6 +81,13 @@ const Cart = () => {
                                     type="text"
                                     placeholder="Nombre"
                                 />
+
+                                <input
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    value={lastname}
+                                    type="text"
+                                    placeholder="Apellido"
+                                />  
 
                                 <input
                                     onChange={(e) => setEmail(e.target.value)}
